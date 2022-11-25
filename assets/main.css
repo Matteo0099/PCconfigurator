@@ -216,9 +216,9 @@ a, button {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
+    margin: 1.25rem auto;
     max-width: 1024px;
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh - 115px);
     flex-direction: column;
 }
 
@@ -290,7 +290,6 @@ a, button {
     outline: 1px solid black;
     background-color: hsl(0, 0%, 22%);
 }
-
 
 
 /* (A) ENTIRE PAGE */
@@ -381,17 +380,20 @@ button.cart {
 
 /* (C) CURRENT SHOPPING CART */
 #cart-items {
+    position: relative;
     display: flex;
     flex-direction: column;
     /*magic*/
     flex-wrap: wrap;
-    position: relative;
+    /*position: fixed;*/
+    /* margin-left: auto;
+    right: 10px; */
     background: #31394d;
     color: #fff;
     border-radius: 5px;
     margin-top: 24px;
     height: fit-content;
-    width: 315px;
+    width: 250px;
 }
 
 @media screen and (max-width: 767px) {
@@ -482,4 +484,40 @@ button.c-checkout {
     #cart-products {
         grid-template-columns: 100%;
     }
+}
+
+.footer-main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    min-height: 10rem;
+    background-color: #202123;
+    color: whitesmoke;
+}
+
+.footer-main > .footer-list {
+    display: inherit;
+    flex-direction: row;
+    width: 100%;
+}
+
+.footer-main > .footer-list > .list-social {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin: auto !important; 
+    padding: 2rem 0 !important;
+    gap: 24px !important;
+}
+
+footer i.bi {
+    cursor:pointer !important;
+    color: whitesmoke !important;
+}
+
+.footer-cpy {
+    margin: auto;
+    text-align: center;
+    padding: 0;
 }
