@@ -32,6 +32,8 @@ var cart = {
         // (C1) GET HTML ELEMENTS
         cart.hPdt = document.getElementById("cart-products");
         cart.hItems = document.getElementById("cart-items");
+        //2 output
+        cart.gItems = document.getElementById("cart-items-2");
 
         // (C2) DRAW PRODUCTS LIST
         cart.hPdt.innerHTML = "";
@@ -70,6 +72,16 @@ var cart = {
             item.innerHTML = "Cart is empty";
             //document.getElementById("element").style.display = "block";
             cart.hItems.appendChild(item);
+            /****/
+        }
+        cart.gItems.innerHTML = "";
+        // (D2) CART IS EMPTY (second output)
+        if (empty) {
+            item = document.createElement("div");
+            item.innerHTML = "Add a product !";
+            //document.getElementById("element").style.display = "block";
+            cart.hItems.appendChild(item);
+            /****/
         }
 
         // (D3) CART IS NOT EMPTY - LIST ITEMS
@@ -313,27 +325,4 @@ function calculator() {
         console.log("test")
     }
 }
-
-/*var cart = [];
-var cartElement = document.getElementById("cart");
-
-function addToCart(obj) {
-    var str = obj.dataset.productname;
-    var price = obj.dataset.price;
-    cart.push(str);
-    cartElement.innerHTML = cart.join("<br>");
-    var old_price = document.getElementById('total_sum').value;
-    var new_price = parseInt(old_price) + parseInt(price);
-    document.getElementById('total_sum').value = new_price;
-    document.getElementById('sum').innerHTML = new_price;
-}
-
-var products = document.getElementsByClassName('details');
-
-for (var i = 0; i < products.length; i++) {
-    products[i].addEventListener("click", handleClick, false);
-}
-
-function handleClick(e) {
-    addToCart(this);
-}*/
+*/
