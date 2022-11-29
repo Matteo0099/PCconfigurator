@@ -13,7 +13,6 @@ Security
 readme/README.md
 @l-j
 
-[![GitHub Release][releases-shield]][releases]
 [![GitHub Activity][commits-shield]][commits]
 [![License][license-shield]](LICENSE.md)
 
@@ -22,7 +21,6 @@ readme/README.md
 [![BuyMeCoffee][buymecoffeebadge]][buymecoffee]
 
 [![Discord][discord-shield]][discord]
-[![Community Forum][forum-shield]][forum]
 
 _Use the installation in the top of you index.html page!_
 _If you're in other languages, in the top of your style.css or global.css_
