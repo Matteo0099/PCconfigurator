@@ -1,192 +1,228 @@
-var cart = {
-    // (A) PROPERTIES
-    hPdt: null,      // html products list
-    hItems: null,    // html current cart
-    items: {},       // current items in cart
-    iURL: "public/", // product image url folder
+var cartId = "cart";
 
-    // (B) LOCALSTORAGE CART
-    // (B1) SAVE CURRENT CART INTO LOCALSTORAGE
-    save: () => {
-        localStorage.setItem("cart", JSON.stringify(cart.items));
+var localAdapter = {
+
+    saveCart: function (object) {
+
+        var stringified = JSON.stringify(object);
+        localStorage.setItem(cartId, stringified);
+        return true;
+
     },
+    getCart: function () {
 
-    // (B2) LOAD CART FROM LOCALSTORAGE
-    load: () => {
-        cart.items = localStorage.getItem("cart");
-        if (cart.items == null) { cart.items = {}; }
-        else { cart.items = JSON.parse(cart.items); }
+        return JSON.parse(localStorage.getItem(cartId));
+
     },
+    clearCart: function () {
 
-    // (B3) EMPTY ENTIRE CART
-    nuke: () => {
-        if (confirm("Empty cart?")) {
-            cart.items = {};
-            localStorage.removeItem("cart");
-            cart.list();
-        }
-    },
+        localStorage.removeItem(cartId);
 
-    // (C) INITIALIZE
-    init: () => {
-        // (C1) GET HTML ELEMENTS
-        cart.hPdt = document.getElementById("cart-products");
-        cart.hItems = document.getElementById("cart-items");
-        //2 output
-        cart.gItems = document.getElementById("cart-items-2");
-
-        // (C2) DRAW PRODUCTS LIST
-        cart.hPdt.innerHTML = "";
-        let template = document.getElementById("template-product").content,
-            p, item, part;
-        for (let id in products) {
-            p = products[id];
-            item = template.cloneNode(true);
-            item.querySelector(".p-img").src = cart.iURL + p.img;
-            item.querySelector(".p-name").textContent = p.name;
-            item.querySelector(".p-desc").textContent = p.desc;
-            item.querySelector(".p-price").textContent = "$" + p.price.toFixed(2);
-            item.querySelector(".p-add").onclick = () => { cart.add(id); };
-            cart.hPdt.appendChild(item);
-        }
-
-        // (C3) LOAD CART FROM PREVIOUS SESSION
-        cart.load();
-
-        // (C4) LIST CURRENT CART ITEMS
-        cart.list();
-    },
-
-    // (D) LIST CURRENT CART ITEMS (IN HTML)
-    list: () => {
-        // (D1) RESET
-        cart.hItems.innerHTML = "";
-        let item, part, pdt, empty = true;
-        for (let key in cart.items) {
-            if (cart.items.hasOwnProperty(key)) { empty = false; break; }
-        }
-
-        // (D2) CART IS EMPTY
-        if (empty) {
-            item = document.createElement("div");
-            item.innerHTML = "Cart is empty";
-            //document.getElementById("element").style.display = "block";
-            cart.hItems.appendChild(item);
-            /****/
-        }
-        cart.gItems.innerHTML = "";
-        // (D2) CART IS EMPTY (second output)
-        if (empty) {
-            item = document.createElement("div");
-            item.innerHTML = "Add a product !";
-            //document.getElementById("element").style.display = "block";
-            cart.hItems.appendChild(item);
-            /****/
-        }
-
-        // (D3) CART IS NOT EMPTY - LIST ITEMS
-        else {
-            let template = document.getElementById("template-cart").content,
-                p, total = 0, subtotal = 0;
-            for (let id in cart.items) {
-                // (D3-1) PRODUCT ITEM
-                p = products[id];
-                item = template.cloneNode(true);
-                item.querySelector(".c-del").onclick = () => { cart.remove(id); };
-                item.querySelector(".c-name").textContent = p.name;
-                item.querySelector(".c-qty").value = cart.items[id];
-                item.querySelector(".c-qty").onchange = function () { cart.change(id, this.value); };
-                cart.hItems.appendChild(item);
-
-                // (D3-2) SUBTOTAL
-                subtotal = cart.items[id] * p.price;
-                total += subtotal;
-            }
-
-            // (D3-3) TOTAL AMOUNT
-            item = document.createElement("div");
-            item.className = "c-total";
-            item.id = "c-total";
-            item.innerHTML = "TOTAL: $" + total;
-            cart.hItems.appendChild(item);
-
-            // (D3-4) EMPTY & CHECKOUT
-            item = document.getElementById("template-cart-checkout").content.cloneNode(true);
-            cart.hItems.appendChild(item);
-        }
-    },
-
-    // (E) ADD ITEM INTO CART
-    add: (id) => {
-        if (cart.items[id] == undefined) { cart.items[id] = 1; }
-        else { cart.items[id]++; }
-        cart.save(); cart.list();
-    },
-
-    // (F) CHANGE QUANTITY
-    change: (pid, qty) => {
-        // (F1) REMOVE ITEM
-        if (qty <= 0) {
-            delete cart.items[pid];
-            cart.save(); cart.list();
-        }
-        // (F2) UPDATE TOTAL ONLY
-        else {
-            $('#totale').maskMoney();
-            cart.items[pid] = qty;
-            var total = 0;
-            for (let id in cart.items) {
-                total += cart.items[id] * products[id].price;
-                document.getElementById("c-total").innerHTML = "TOTAL: $" + total;
-            }
-        }
-    },
-
-    // (G) REMOVE ITEM FROM CART
-    remove: (id) => {
-        delete cart.items[id];
-        cart.save();
-        cart.list();
-    },
-
-    // (H) CHECKOUT
-    checkout: () => {
-        // SEND DATA TO SERVER
-        // CHECKS
-        // SEND AN EMAIL
-        // RECORD TO DATABASE
-        // PAYMENT
-        // WHATEVER IS REQUIRED
-        alert("TO DO");
-
-        /*var data = new FormData();
-        data.append("cart", JSON.stringify(cart.items));
-        data.append("products", JSON.stringify(products));
-    
-        fetch("SERVER-SCRIPT", { method:"POST", body:data })
-        .then(res=>res.text()).then((res) => {
-          console.log(res);
-        })
-        .catch((err) => { console.error(err); });*/
     }
+
 };
-window.addEventListener("DOMContentLoaded", cart.init);
 
+var ajaxAdapter = {
 
-/*function calculator() {
-    var productPrice = document.getElementById("sumOfProducts")
+    saveCart: function (object) {
 
-    for (var i = 0; i < listOfProducts.length; i++) {
-        if (productPrice == listOfProducts[i].price) {
-            var productPriceSum = {
-                price: listOfProducts[i].price
-            }
-            var parentDivTwo = document.getElementById("sumOfProducts")
-            getPhonePriceSum = document.createElement("h3")
-            getPhonePriceSum.innerText = productPriceSum.price + " kr"
-            parentDivTwo.appendChild(getPhonePriceSum)
-        }
-        console.log("test")
+        var stringified = JSON.stringify(object);
+        // do an ajax request here
+
+    },
+    getCart: function () {
+
+        // do an ajax request -- recognize user by cookie / ip / session
+        return JSON.parse(data);
+
+    },
+    clearCart: function () {
+
+        //do an ajax request here
+
     }
-}
-*/
+
+};
+
+var storage = localAdapter;
+
+var helpers = {
+
+    getHtml: function (id) {
+
+        return document.getElementById(id).innerHTML;
+
+    },
+    setHtml: function (id, html) {
+
+        document.getElementById(id).innerHTML = html;
+        return true;
+
+    },
+    itemData: function (object) {
+
+        var count = object.querySelector(".count"),
+            patt = new RegExp("^[1-9]([0-9]+)?$");
+        count.value = (patt.test(count.value) === true) ? parseInt(count.value) : 1;
+
+        var item = {
+
+            name: object.getAttribute('data-name'),
+            price: object.getAttribute('data-price'),
+            id: object.getAttribute('data-id'),
+            count: count.value,
+            total: parseInt(object.getAttribute('data-price')) * parseInt(count.value)
+
+        };
+        return item;
+
+    },
+    updateView: function () {
+
+        var items = cart.getItems(),
+            template = this.getHtml('cartT'),
+            compiled = _.template(template, {
+                items: items
+            });
+        this.setHtml('cartItems', compiled);
+        this.updateTotal();
+
+    },
+    emptyView: function () {
+
+        this.setHtml('cartItems', '<p>Nothing to see here</p>');
+        this.updateTotal();
+
+    },
+    updateTotal: function () {
+
+        this.setHtml('totalPrice', cart.total + '$');
+
+    }
+
+};
+
+var cart = {
+
+    count: 0,
+    total: 0,
+    items: [],
+    getItems: function () {
+
+        return this.items;
+
+    },
+    setItems: function (items) {
+
+        this.items = items;
+        for (var i = 0; i < this.items.length; i++) {
+            var _item = this.items[i];
+            this.total += _item.total;
+        }
+
+    },
+    clearItems: function () {
+
+        this.items = [];
+        this.total = 0;
+        storage.clearCart();
+        helpers.emptyView();
+
+    },
+    addItem: function (item) {
+
+        if (this.containsItem(item.id) === false) {
+
+            this.items.push({
+                id: item.id,
+                name: item.name,
+                price: item.price,
+                count: item.count,
+                total: item.price * item.count
+            });
+
+            storage.saveCart(this.items);
+
+
+        } else {
+
+            this.updateItem(item);
+
+        }
+        this.total += item.price * item.count;
+        this.count += item.count;
+        helpers.updateView();
+
+    },
+    containsItem: function (id) {
+
+        if (this.items === undefined) {
+            return false;
+        }
+
+        for (var i = 0; i < this.items.length; i++) {
+
+            var _item = this.items[i];
+
+            if (id == _item.id) {
+                return true;
+            }
+
+        }
+        return false;
+
+    },
+    updateItem: function (object) {
+
+        for (var i = 0; i < this.items.length; i++) {
+
+            var _item = this.items[i];
+
+            if (object.id === _item.id) {
+
+                _item.count = parseInt(object.count) + parseInt(_item.count);
+                _item.total = parseInt(object.total) + parseInt(_item.total);
+                this.items[i] = _item;
+                storage.saveCart(this.items);
+
+            }
+
+        }
+
+    }
+
+};
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    if (storage.getCart()) {
+
+        cart.setItems(storage.getCart());
+        helpers.updateView();
+
+    } else {
+
+        helpers.emptyView();
+
+    }
+    var products = document.querySelectorAll('.product button');
+    [].forEach.call(products, function (product) {
+
+        product.addEventListener('click', function (e) {
+
+            var item = helpers.itemData(this.parentNode);
+            cart.addItem(item);
+
+
+        });
+
+    });
+
+    document.querySelector('#clear').addEventListener('click', function (e) {
+
+        cart.clearItems();
+
+    });
+
+
+});

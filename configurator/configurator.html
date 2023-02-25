@@ -1,129 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Pc configurator</title>
-        <link rel="icon" href="../public/Logo.jpg" title="logo">
-        <link rel="stylesheet" href="../assets/main.css">
-        <!--cdn-->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-        <!--script-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="../src/product.js"></script>
-        <script src="../src/app.js"></script>
-    </head>
 
-    <body>
-        <div class="nav">
-            <div class="container-xl">
-                <div class="layer">
-                    <div class="logo start">
-                        <img src="../public/LogoPCConfig.jpeg" alt="">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pc configurator</title>
+    <link rel="icon" href="../public/Logo.jpg" title="logo">
+    <link rel="stylesheet" href="../assets/main.css">
+    <!--cdn-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/foundation/5.0.2/css/foundation.css'> -->
+</head>
+
+<body>
+    <div class="nav">
+        <div class="container-xl">
+            <div class="layer">
+                <div class="logo start">
+                    <img src="../public/LogoPCConfig.jpeg" alt="">
+                </div>
+                <div class="hamburger">
+                    <i class="bi bi-list"></i>
+                </div>
+            </div>
+            <ul class="list">
+                <li class="list__item">
+                    <a href="../index.html">Home</a>
+                </li>
+                <li class="list__item">
+                    <a href="./configurator.html">
+                        <i class="bi bi-tools"></i>
+                        Pc-Configurator
+                    </a>
+                </li>
+                <li class="list__item">
+                    <a href="../index.html#configurations">
+                        <i class="bi bi-pc-display"></i>
+                        Configurations
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="landing">
+        <div class="container">
+            <h1 class="title">Complete your build!</h1>
+            <h4>Choose Only 1 product for Category</h4>
+        </div>
+
+        <div class="box">
+            <ul class="box-list">
+                <li><a>CPU</a></li>
+                <li><a>Motherboard</a></li>
+                <li><a>GPU</a></li>
+                <li><a>RAM</a></li>
+                <li><a>Case</a></li>
+                <li><a>Alimentatore</a></li>
+                <li><a>Archiviazione</a></li>
+            </ul>
+        </div>
+
+        <!-- all carts -->
+        <!-- 1 -->
+        <div class="cpu product-group">
+            <div class="column products">
+                <h1>Cpu</h1>
+                <div class="item">
+                    <div class="product" data-name="Ryzen" aria-valuenow="1" data-price="180" data-id="0">
+                        <!-- <img src="./img/orange.png" alt="" /> -->
+                        <h3>Ryzen 3 3800x</h3>
+                        <input type="text" class="count" value="1" />
+                        <button class="tiny">Add to cart</button>
                     </div>
-                    <div class="hamburger">
-                        <i class="bi bi-list"></i>
+                    <div class="product" data-name="Ryzen" data-price="275" data-id="1">
+                        <!-- <img src="./img/apple.jpg" alt="" /> -->
+                        <h3>Ryzen 5 5800x</h3>
+                        <input type="text" class="count" value="1" />
+                        <button class="tiny">Add to cart</button>
+                    </div>
+                    <div class="product" data-name="Ryzen" data-price="350" data-id="2">
+                        <!-- <img src="./img/peach.jpg" alt="" /> -->
+                        <h3>Ryzen 7 3800xt</h3>
+                        <input type="text" class="count" value="1" />
+                        <button class="tiny">Add to cart</button>
+                    </div>
+                    <div class="product" data-name="Ryzen" data-price="550" data-id="2">
+                        <!-- <img src="./img/peach.jpg" alt="" /> -->
+                        <h3>Ryzen 9 5950x</h3>
+                        <input type="text" class="count" value="1" />
+                        <button class="tiny">Add to cart</button>
                     </div>
                 </div>
-                <ul class="list">
-                    <li class="list__item">
-                        <a href="../index.html">Home</a>
-                    </li>
-                    <li class="list__item">
-                        <a href="./configurator.html">
-                            <i class="bi bi-tools"></i>
-                            Pc-Configurator
-                        </a>
-                    </li>
-                    <li class="list__item">
-                        <a href="../index.html#configurations">
-                            <i class="bi bi-pc-display"></i>
-                            Configurations
-                        </a>
-                    </li>
-                </ul>
+            </div>
+        </div>
+        <!-- 2 -->
+        <div class="motherboard product-group">
+            <div class="column products">
+                <h1>Motherboards</h1>
+                <div class="item">
+                    <div class="product" data-name="" aria-valuenow="1" data-price="180" data-id="0">
+                        <h3>Asus TUF</h3>
+                        <input type="text" class="count" value="1" />
+                        <button class="tiny">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 3 -->
+        <div class="gpu product-group">
+            <div class="column products">
+                <h1>Gpu</h1>
+                <div class="item">
+                    <div class="product" data-name="" aria-valuenow="1" data-price="400" data-id="0">
+                        <h3>RTX 3060</h3>
+                        <input type="text" class="count" value="1" />
+                        <button class="tiny">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 4 -->
+        <div class="ram product-group">
+            <div class="column products">
+                <h1>Ram</h1>
+                <div class="item">
+                    <div class="product" data-name="" aria-valuenow="1" data-price="65" data-id="0">
+                        <h3>8gb cl16 3600mhz</h3>
+                        <input type="text" class="count" value="1" />
+                        <button class="tiny">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 5 -->
+        <div class="case product-group">
+            <div class="column products">
+                <h1>Cases</h1>
+                <div class="item">
+                    <div class="product" data-name="" aria-valuenow="1" data-price="90" data-id="0">
+                        <h3>NZXT h50 airflow</h3>
+                        <input type="text" class="count" value="1" />
+                        <button class="tiny">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 6 -->
+        <div class="alimentatore product-group">
+            <div class="column products">
+                <h1>Power-supply</h1>
+                <div class="item">
+                    <div class="product" data-name="" aria-valuenow="1" data-price="120" data-id="0">
+                        <h3>EVGA 800watt</h3>
+                        <input type="text" class="count" value="1" />
+                        <button class="tiny">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 7 -->
+        <div class="archiviazione product-group">
+            <div class="column products">
+                <h1></h1>
+                <div class="item">
+                    <div class="product" data-name="" aria-valuenow="1" data-price="90" data-id="0">
+                        <h3>Samsung 970 evo plus</h3>
+                        <input type="text" class="count" value="1" />
+                        <button class="tiny">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end all config -->
+
+        <!-- shopping results -->
+        <div class="relative cart">
+            <div class="cart">
+                <h1>Cart items</h1>
+                <div class="row">
+                    <div class="medium-6 columns">
+                        <button class="tiny secondary" id="clear">Clear the cart</button>
+                    </div>
+                    <div class="medium-6 columns">
+                        <button class="tiny disabled" title="Work in progress">Checkout</button>
+                    </div>
+                </div>
+                <div id="cartItems">Loading cart...</div>
+                Total price: <strong id="totalPrice">0 $</strong>
             </div>
         </div>
 
-        <div class="landing">
-            <div class="container">
-                <h1 class="title">Complete your build!</h1>
-                <h4>Choose Only 1 product for Category</h4>
-            </div>
-
-            <!-- (A) CART -->
-            <div id="cart-wrap">
-                <!-- (A1) PRODUCTS LIST -->
-                <div id="cart-products"></div>
-        
-                <!-- (A2) CURRENT CART ITEMS -->
-                <div id="cart-items"></div>
-                <div id="cart-items-2"></div>
-            </div>
-        
-            <!-- (B) TEMPLATES -->
-            <!-- (B1) PRODUCT CELL -->
-            <template id="template-product">
-                <div class="p-item">
-                    <img class="p-img"/>
-                    <div class="p-name"></div>
-                    <div class="p-desc"></div>
-                    <div class="p-price"></div>
-                    <button class="cart p-add">Add To Cart</button>
+        <!-- price -->
+        <script type="text/template" id="cartT">
+            <% _.each(items, function (item) { %> 
+                <div class = "panel"> 
+                    <h3> <%= item.name %> </h3>  
+                    <span class="label">
+                        <%= item.count %> piece<% if(item.count > 1)
+                        {%>s
+                        <%}%> for <%= item.total %>$
+                    </span> 
                 </div>
-            </template>
-        
-            <!-- (B2) CART ITEMS -->
-            <template id="template-cart">
-                <div class="c-item">
-                    <div class="c-name"></div>
-                    <button class="c-del cart">X</button>
-                    <input class="c-qty" type="number" min="0"/>
-                </div>
-            </template>
-            <template id="template-cart-checkout">
-                <i class="bi bi-cart2"></i>
-                <button class="c-empty cart" onclick="cart.nuke()">Empty</button>
-                <button class="c-checkout cart" onclick="cart.checkout()">Checkout</button>
-            </template>
-        </div>
-
-        <footer class="footer-main">
-            <div class="footer-list">
-                <ul class="list-social">
-                    <li>
-                        <a href="">
-                            <i class="bi bi-facebook"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <i class="bi bi-instagram"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <i class="bi bi-github"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <i class="bi bi-envelope-plus"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <p class="footer-cpy">copyright &copy; 2022 | <a href="https://matteomania.tk" target="_blank">Matteo Manià</a></p>
-        </footer>
-
-        <!--nav toggle-->
-        <script>
-            $(document).ready(function(){
-                $(".hamburger").click(function(){
-                    $(".list").toggleClass("active");
-                });
-            });
+            <% }); %>
         </script>
-    </body>
+    </div>
+
+    <footer class="footer-main">
+        <div class="footer-list">
+            <ul class="list-social">
+                <li>
+                    <a href="">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="bi bi-github"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="bi bi-envelope-plus"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <p class="footer-cpy">copyright &copy; 2022 | <a href="https://matteomania.tk" target="_blank">Matteo Manià</a>
+        </p>
+    </footer>
+
+    <!--script-->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js'></script>
+    <script src="../src/app.js"></script>
+    <script src="../src/ProductsEvent.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!--nav toggle-->
+    <script>
+        $(document).ready(function () {
+            $(".hamburger").click(function () {
+                $(".list").toggleClass("active");
+            });
+        });
+    </script>
+</body>
 </html>
