@@ -1,3 +1,11 @@
+/*
+
+  Author: Mihovil Ilakovac (infomiho)
+  Used: javascript + underscore.js (for templating), Foundation 5 (design)
+  
+  It's based on a simple idea, to minimize requests to the server and only send the final cart to the server for evaluation and payment.
+
+*/
 var cartId = "cart";
 
 var localAdapter = {
