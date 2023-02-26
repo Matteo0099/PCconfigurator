@@ -1,6 +1,12 @@
 // Get all menu items
 const menuItems = document.querySelectorAll('.box-list a');
 
+// Get the CPU item group and show it
+const cpuGroup = document.querySelector('.cpu');
+if (cpuGroup) {
+  cpuGroup.style.display = 'block';
+}
+
 // Add click event listener to each menu item
 menuItems.forEach(item => {
   item.addEventListener('click', event => {

@@ -1,8 +1,8 @@
 const addToCartButtons = document.querySelectorAll('.cart');
-const clearButton = document.querySelector('.clear');
+const clearButton = document.getElementById('clear');
 
-addToCartButtons.forEach(function(button) {
-  button.addEventListener('click', function() {
+addToCartButtons.forEach(function (button) {
+  button.addEventListener('click', function () {
     const existingMessage = document.querySelector('.message');
     if (existingMessage) {
       existingMessage.remove();
@@ -14,40 +14,39 @@ addToCartButtons.forEach(function(button) {
 
     const message = document.createElement('div');
     message.classList.add('message');
-    message.innerText = 'Product added to cart!';
+    message.innerText = 'Product added!';
 
     message.style.top = buttonTop + 'px';
     message.style.left = buttonLeft + 'px';
 
     document.body.appendChild(message);
 
-    setTimeout(function() {
+    setTimeout(function () {
       message.remove();
-    }, 3000);
+    }, 1500);
   });
 });
 
-clearButton.addEventListener('click', function() {
+clearButton.addEventListener('click', function () {
   const existingMessage = document.querySelector('.message');
   if (existingMessage) {
     existingMessage.remove();
   }
 
-  const clearButtonRect = clearButton.getBoundingClientRect();
-  const clearButtonTop = clearButtonRect.top + window.pageYOffset;
-  const clearButtonLeft = clearButtonRect.left + window.pageXOffset;
+  const btnRect = clearButton.getBoundingClientRect();
+  const btnTop = btnRect.top + window.pageYOffset;
+  const btnLeft = btnRect.left + window.pageXOffset;
 
   const message = document.createElement('div');
   message.classList.add('message');
-  message.innerHTML = '';
-  message.innerText = 'Cart cleared!';
+  message.innerText = 'Cleared!';
 
-  message.style.top = clearButtonTop + 'px';
-  message.style.left = clearButtonLeft + 'px';
+  message.style.top = btnTop + 'px';
+  message.style.left = btnLeft + 'px';
 
   document.body.appendChild(message);
 
-  setTimeout(function() {
+  setTimeout(function () {
     message.remove();
-  }, 3000);
-});
+  }, 1500);
+})
