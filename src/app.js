@@ -98,7 +98,7 @@ var helpers = {
     },
     emptyView: function () {
 
-        this.setHtml('cartItems', '<p>Nothing to see here</p>');
+        this.setHtml('cartItems', '');
         this.updateTotal();
 
     },

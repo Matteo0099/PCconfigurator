@@ -4,6 +4,8 @@
 html, body {
     font-family: 'Poppins', sans-serif;
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
 }
 
 /* Box sizing rules */
@@ -74,10 +76,10 @@ select {
     *,
     *::before,
     *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
+        animation-duration: 0.01ms;
+        animation-iteration-count: 1;
+        transition-duration: 0.01ms;
+        scroll-behavior: auto;
     }
 }
 
@@ -457,7 +459,8 @@ button.cart {
 }
 
 .product {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+    padding-top: .25rem;
 }
 
 .box-list li a {
@@ -467,7 +470,167 @@ button.cart {
 .product-group {
     display: none;
 }
+
+.total-price {
+    font-size: 1.25rem;
+    padding: .5rem .25rem;
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+}
+
+.relative.cart>.cart {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 4rem 0;
+}
+
+.cart>.row {
+    margin: .75rem 0;
+}
+
+.column.products {
+    margin: 1.25rem 1.025rem;
+    padding: .5rem;
+}
+
+.product>img {
+    height: fit-content !important;
+}
+
+.samsung {
+    margin-top: 4.75rem !important;
+}
+
+/* message when i add some product */
+.message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333;
+    color: white;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* style the buttons */
+.tiny {
+    position: relative;
+    width: 100%;
+    min-width: 175px;
+    overflow: hidden;
+    text-decoration: none;
+    text-align: center;
+    white-space: normal;
+    font-weight: 400;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 15px 25px;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    transition: background 0.25s ease 0s;
+    -webkit-transition: background 0.25s ease 0s;
+    -moz-transition: background 0.25s ease 0s;
+    -o-transition: background 0.25s ease 0s;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    line-height: 1.4;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.tiny.secondary {
+    color: #fff;
+    background: #111111;
+}
+
+.tiny.secondary:hover {
+    background: #2b2b2b;
+    color: #fff;
+}
+
+.tiny.secondary:active {
+    background: #000;
+}
+
+.tiny.cart:active {
+    background: #ff4316;
+}
+
+.tiny::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 150%;
+    width: 200%;
+    height: 100%;
+    transform: skew(-20deg);
+    -webkit-transform: skew(-20deg);
+    -moz-transform: skew(-20deg);
+    -o-transform: skew(-20deg);
+    background-image: linear-gradient(90deg,
+            transparent,
+            hsla(0, 0%, 100%, 0.275),
+            transparent);
+}
+
+.tiny:hover {
+    transition-delay: 0.33s;
+    -webkit-transition-delay: 0.33s;
+    -o-transition-delay: 0.33s;
+    -moz-transition-delay: 0.33s;
+}
+
+.tiny:hover::after {
+    animation: shine 0.6s cubic-bezier(0.01, 0.56, 1, 1);
+    -webkit-animation: shine 0.6s cubic-bezier(0.01, 0.56, 1, 1);
+    -moz-animation: shine 0.6s cubic-bezier(0.01, 0.56, 1, 1);
+    -o-animation: shine 0.6s cubic-bezier(0.01, 0.56, 1, 1);
+}
+
+.tiny:active {
+    transition: transform 0.15s cubic-bezier(0.01, 0.56, 1, 1);
+    -webkit-transition: transform 0.15s cubic-bezier(0.01, 0.56, 1, 1);
+    transform: scale(0.975);
+    -webkit-transform: scale(0.975);
+}
+
+@keyframes shine {
+    to {
+        left: -200%
+    }
+}
+
+@-moz-keyframes shine {
+    to {
+        left: -200%
+    }
+}
+
+@-webkit-keyframes shine {
+    to {
+        left: -200%
+    }
+}
+
+@-o-keyframes shine {
+    to {
+        left: -200%
+    }
+}
+
 /** end products **/
+
+.hdd {
+    margin: 4rem 0 0 0;
+}
 
 .box li {
     display: flex;
